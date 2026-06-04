@@ -50,7 +50,20 @@ h2 { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 30px; le
 .footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 12px; color: #444; letter-spacing: 1px; }
 .footer span { color: #c9a84c; }
 strong.w { color: #ccc; font-weight: 500; }
+.tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.tab { background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 8px 16px; font-size: 13px; color: #888; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+.tab.active { background: #c9a84c; border-color: #c9a84c; color: #000; font-weight: 600; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 </style>
+<script>
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 </head>
 <body>
 <div class="hero">
@@ -102,11 +115,42 @@ strong.w { color: #ccc; font-weight: 500; }
   <div class="section">
     <div class="section-label">Setup Guide</div>
     <h2>How to Subscribe</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Google Calendar on desktop</h3><p>Go to calendar.google.com in a desktop browser (laptop or PC). This feature is not available on mobile browsers.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Add calendar from URL</h3><p>In the left sidebar, click the <strong class="w">+</strong> icon next to "Other calendars", then select <strong class="w">From URL</strong>.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Paste the calendar URL</h3><div class="url-box">https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics</div></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Click "Add calendar"</h3><p>All 104 matches will appear instantly. Times are automatically shown in your local timezone.</p></div></div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('google', this)">🗓 Google Calendar</button>
+      <button class="tab" onclick="showTab('iphone', this)">📱 iPhone / iPad</button>
+      <button class="tab" onclick="showTab('mac', this)">💻 Mac (iCal)</button>
+    </div>
+
+    <!-- Google -->
+    <div id="tab-google" class="tab-content active">
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Google Calendar on desktop</h3><p>Go to calendar.google.com in a desktop browser (laptop or PC). This feature is not available on mobile browsers.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Add calendar from URL</h3><p>In the left sidebar, click the <strong class="w">+</strong> icon next to "Other calendars", then select <strong class="w">From URL</strong>.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Paste the calendar URL</h3><div class="url-box">https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Click "Add calendar"</h3><p>All 104 matches will appear instantly. Times are automatically shown in your local timezone.</p></div></div>
+      </div>
+    </div>
+
+    <!-- iPhone/iPad -->
+    <div id="tab-iphone" class="tab-content">
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Settings</h3><p>Go to <strong class="w">Settings</strong> → <strong class="w">Calendar</strong> → <strong class="w">Accounts</strong>.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Add Account</h3><p>Tap <strong class="w">Add Account</strong> → <strong class="w">Other</strong>.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Add Subscribed Calendar</h3><p>Tap <strong class="w">Add Subscribed Calendar</strong> and paste the URL below.</p><div class="url-box">https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Tap Save</h3><p>All 104 matches will appear in your Apple Calendar, automatically shown in your local timezone.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Mac -->
+    <div id="tab-mac" class="tab-content">
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Calendar app</h3><p>Open the <strong class="w">Calendar</strong> app on your Mac.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>New Calendar Subscription</h3><p>Click <strong class="w">File</strong> → <strong class="w">New Calendar Subscription</strong>.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Paste the calendar URL</h3><div class="url-box">https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Click Subscribe then OK</h3><p>All 104 matches will appear in iCal, automatically shown in your local timezone.</p></div></div>
+      </div>
     </div>
   </div>
 
