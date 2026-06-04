@@ -55,15 +55,14 @@ strong.w { color: #ccc; font-weight: 500; }
 .tab.active { background: #c9a84c; border-color: #c9a84c; color: #000; font-weight: 600; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
+.countdown { margin-top: 28px; }
+.countdown-label { font-size: 11px; letter-spacing: 3px; color: #888; text-transform: uppercase; margin-bottom: 12px; }
+.countdown-units { display: flex; gap: 10px; flex-wrap: wrap; }
+.countdown-unit { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 16px; text-align: center; min-width: 60px; }
+.countdown-num { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 36px; color: #c9a84c; line-height: 1; display: block; }
+.countdown-unit-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; display: block; }
+.countdown-finished { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 24px; color: #4caf82; margin-top: 12px; }
 </style>
-<script>
-function showTab(name, btn) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  btn.classList.add('active');
-}
-</script>
 </head>
 <body>
 <div class="hero">
@@ -77,6 +76,16 @@ function showTab(name, btn) {
     <span class="badge">Jun 11 – Jul 19</span>
     <span class="badge">Auto-updating</span>
     <span class="badge">Shareable</span>
+  </div>
+  <div class="countdown">
+    <div class="countdown-label">⚽ Kick-off: Mexico vs South Africa — 11 Jun, 8pm BST</div>
+    <div id="countdown-display" class="countdown-units">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-unit-label">Days</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-unit-label">Hours</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-unit-label">Mins</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-unit-label">Secs</span></div>
+    </div>
+    <div id="countdown-finished" class="countdown-finished" style="display:none">🎉 The World Cup has kicked off!</div>
   </div>
 </div>
 
@@ -185,5 +194,35 @@ function showTab(name, btn) {
   <div class="footer"><p>Created with <span>Claude</span> · FIFA World Cup 2026 · June 2026</p></div>
 
 </div>
+<script>
+// Countdown to Mexico vs South Africa: 11 Jun 2026 20:00 BST = 19:00 UTC
+var kickoff = new Date('2026-06-11T19:00:00Z');
+function updateCountdown() {
+  var now = new Date();
+  var diff = kickoff - now;
+  if (diff <= 0) {
+    document.getElementById('countdown-display').style.display = 'none';
+    document.getElementById('countdown-finished').style.display = 'block';
+    return;
+  }
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var secs = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById('cd-days').textContent = days;
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 </body>
 </html>
