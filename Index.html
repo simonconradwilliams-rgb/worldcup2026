@@ -1,88 +1,145 @@
-🏆
-LIVE CALENDAR PROJECT
-FIFA World Cup 2026
-YOUR COMPLETE AUTO-UPDATING MATCH CALENDAR
-104 MATCHES
-48 TEAMS
-JUN 11 – JUL 19
-AUTO-UPDATING
-SHAREABLE
-104
-TOTAL MATCHES
-16
-HOST CITIES
-39
-DAYS OF FOOTBALL
-OVERVIEW
-What We Built
-📅
-ICS Calendar File
-A complete .ics file containing all 104 World Cup matches with kick-off times (auto-converted to your local timezone), stadium names, and locations.
-☁️
-Hosted on GitHub Gist
-The calendar file is publicly hosted at a permanent URL on GitHub Gist, making it accessible from anywhere at any time.
-🔄
-Live Google Calendar Subscription
-Your Google Calendar subscribes to the Gist URL and polls for updates — meaning when knockout team names are confirmed, your calendar updates automatically.
-🔗
-Shareable with Anyone
-Anyone can subscribe to the same URL and get the same live-updating calendar in their own Google Calendar, Apple Calendar, or any calendar app.
-SHARING
-Share With Friends
-Your Calendar URL
-Share this URL with anyone — they can subscribe in any calendar app that supports URL subscriptions (Google Calendar, Apple Calendar, Outlook).
-https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics
-To subscribe in Google Calendar: go to calendar.google.com → click + next to "Other calendars" → From URL → paste the URL above.
-SETUP GUIDE
-How to Subscribe
-1
-Open Google Calendar on desktop
-Go to calendar.google.com in a desktop browser (laptop or PC). This feature is not available on mobile browsers.
-2
-Add calendar from URL
-In the left sidebar, click the + icon next to "Other calendars", then select From URL.
-3
-Paste the calendar URL
-https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics
-4
-Click "Add calendar"
-All 104 matches will appear instantly. Times are automatically shown in your local timezone.
-AUTO-UPDATES
-Knockout Round Updates
-How Updates Work
-As each knockout round is confirmed, the calendar file on GitHub Gist will be updated with the real team names. Because your Google Calendar is subscribed to the URL (not a one-time import), it will automatically pick up the changes — usually within 24 hours.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIFA World Cup 2026 Calendar Guide</title>
+<style type="text/css">
+body { background-color: #0a0a0a; color: #f5f0e8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 300; line-height: 1.6; margin: 0; padding: 0; }
+.hero { padding: 50px 30px 40px; border-bottom: 1px solid #222; background: #0f0c00; }
+.trophy { font-size: 48px; display: block; margin-bottom: 12px; }
+.label { font-size: 11px; letter-spacing: 4px; color: #c9a84c; text-transform: uppercase; margin-bottom: 6px; }
+h1 { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 60px; letter-spacing: 2px; line-height: 0.95; color: #f5f0e8; margin: 0 0 8px 0; }
+h1 span { color: #c9a84c; }
+.hero-sub { color: #888; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-top: 14px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.badge { background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 5px 12px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #e8c87a; }
+.container { max-width: 740px; margin: 0 auto; padding: 0 24px 60px; }
+.section { margin-top: 44px; }
+.section-label { font-size: 11px; letter-spacing: 4px; color: #c9a84c; text-transform: uppercase; margin-bottom: 4px; }
+h2 { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 30px; letter-spacing: 1px; color: #f5f0e8; margin: 0 0 18px 0; padding-bottom: 10px; border-bottom: 1px solid #222; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.stat { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 16px; text-align: center; }
+.stat-num { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 40px; color: #c9a84c; line-height: 1; display: block; }
+.stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; display: block; }
+.grid { display: grid; gap: 10px; }
+.card { background: #1a1a1a; border: 1px solid #2a2a2a; border-left: 3px solid #c9a84c; border-radius: 6px; padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+.card-icon { font-size: 22px; flex-shrink: 0; }
+.card h3 { font-size: 14px; font-weight: 600; color: #f5f0e8; margin: 0 0 4px 0; }
+.card p { font-size: 13px; color: #888; margin: 0; }
+.url-box { background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 12px 14px; margin: 10px 0; font-family: monospace; font-size: 11px; color: #e8c87a; word-break: break-all; line-height: 1.6; }
+.green-box { background: #0a140c; border: 1px solid #2d7a4f; border-radius: 8px; padding: 20px; margin-top: 10px; }
+.green-box h3 { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 20px; color: #4caf82; margin: 0 0 8px 0; }
+.green-box p { font-size: 13px; color: #888; margin: 0 0 10px 0; }
+.gold-box { background: #120e00; border: 1px solid #3a2800; border-radius: 8px; padding: 20px; margin-top: 10px; }
+.gold-box h3 { font-family: Impact, 'Arial Narrow', Arial, sans-serif; font-size: 20px; color: #c9a84c; margin: 0 0 8px 0; }
+.gold-box p { font-size: 13px; color: #888; margin: 0; line-height: 1.6; }
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step { display: flex; gap: 18px; position: relative; }
+.step:not(:last-child):after { content: ''; position: absolute; left: 17px; top: 40px; bottom: 0; width: 2px; background: #222; }
+.step-num { width: 36px; height: 36px; border-radius: 50%; background: #1a1a1a; border: 2px solid #c9a84c; display: flex; align-items: center; justify-content: center; font-family: Impact, Arial, sans-serif; font-size: 16px; color: #c9a84c; flex-shrink: 0; z-index: 1; }
+.step-body { padding: 6px 0 24px; }
+.step-body h3 { font-size: 14px; font-weight: 600; color: #f5f0e8; margin: 0 0 5px 0; }
+.step-body p { font-size: 13px; color: #888; margin: 0; line-height: 1.5; }
+.rounds { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.round { display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 10px 14px; }
+.round-name { font-size: 13px; color: #f5f0e8; font-weight: 500; }
+.round-date { font-size: 12px; color: #666; }
+.status-live { background: rgba(201,168,76,0.15); color: #c9a84c; border: 1px solid rgba(201,168,76,0.3); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
+.status-tbd { background: rgba(100,100,100,0.1); color: #555; border: 1px solid #2a2a2a; font-size: 11px; padding: 3px 10px; border-radius: 20px; }
+.footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 12px; color: #444; letter-spacing: 1px; }
+.footer span { color: #c9a84c; }
+strong.w { color: #ccc; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <span class="trophy">🏆</span>
+  <div class="label">Live Calendar Project</div>
+  <h1>FIFA World Cup<br><span>2026</span></h1>
+  <p class="hero-sub">Your complete auto-updating match calendar</p>
+  <div class="badges">
+    <span class="badge">104 Matches</span>
+    <span class="badge">48 Teams</span>
+    <span class="badge">Jun 11 – Jul 19</span>
+    <span class="badge">Auto-updating</span>
+    <span class="badge">Shareable</span>
+  </div>
+</div>
 
-No action needed on your part. Just ask Claude to update the file after each round!
-Group Stage
-Jun 11 – Jun 27
-✓ Live
-Round of 32
-Jun 28 – Jul 3
-TBD
-Round of 16
-Jul 4 – Jul 7
-TBD
-Quarterfinals
-Jul 9 – Jul 11
-TBD
-Semifinals
-Jul 14 – Jul 15
-TBD
-Third Place & Final
-Jul 18 – Jul 19
-TBD
-MAINTENANCE
-Updating the Calendar
-1
-Ask Claude to update the file
-After each knockout round, ask Claude to generate an updated .ics file with the confirmed team names.
-2
-Go to your GitHub Gist
-Visit gist.github.com and open your worldcup2026.ics gist.
-3
-Click Edit (pencil icon)
-Select all the existing content and replace it with the new file contents from Claude.
-4
-Click "Update public gist"
-Google Calendar will automatically sync the changes within 24 hours. Anyone subscribed to the URL gets the update too.
-Created with Claude · FIFA World Cup 2026 · June 2026
+<div class="container">
+
+  <div class="section">
+    <div class="stats">
+      <div class="stat"><span class="stat-num">104</span><span class="stat-label">Total Matches</span></div>
+      <div class="stat"><span class="stat-num">16</span><span class="stat-label">Host Cities</span></div>
+      <div class="stat"><span class="stat-num">39</span><span class="stat-label">Days of Football</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Overview</div>
+    <h2>What We Built</h2>
+    <div class="grid">
+      <div class="card"><div class="card-icon">📅</div><div><h3>ICS Calendar File</h3><p>A complete .ics file containing all 104 World Cup matches with kick-off times (auto-converted to your local timezone), stadium names, and locations.</p></div></div>
+      <div class="card"><div class="card-icon">☁️</div><div><h3>Hosted on GitHub Gist</h3><p>The calendar file is publicly hosted at a permanent URL on GitHub Gist, making it accessible from anywhere at any time.</p></div></div>
+      <div class="card"><div class="card-icon">🔄</div><div><h3>Live Google Calendar Subscription</h3><p>Your Google Calendar subscribes to the Gist URL and polls for updates — meaning when knockout team names are confirmed, your calendar updates automatically.</p></div></div>
+      <div class="card"><div class="card-icon">🔗</div><div><h3>Shareable with Anyone</h3><p>Anyone can subscribe to the same URL and get the same live-updating calendar in their own Google Calendar, Apple Calendar, or any calendar app.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Sharing</div>
+    <h2>Share With Friends</h2>
+    <div class="green-box">
+      <h3>Your Calendar URL</h3>
+      <p>Share this URL with anyone — they can subscribe in Google Calendar, Apple Calendar, or Outlook.</p>
+      <div class="url-box">https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics</div>
+      <p>To subscribe in <strong class="w">Google Calendar</strong>: go to calendar.google.com → click <strong class="w">+</strong> next to "Other calendars" → <strong class="w">From URL</strong> → paste the URL above.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Setup Guide</div>
+    <h2>How to Subscribe</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Google Calendar on desktop</h3><p>Go to calendar.google.com in a desktop browser (laptop or PC). This feature is not available on mobile browsers.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Add calendar from URL</h3><p>In the left sidebar, click the <strong class="w">+</strong> icon next to "Other calendars", then select <strong class="w">From URL</strong>.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Paste the calendar URL</h3><div class="url-box">https://gist.githubusercontent.com/simonconradwilliams-rgb/d80b85e9d311e7ede37be1bfcce2482c/raw/worldcup2026.ics</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Click "Add calendar"</h3><p>All 104 matches will appear instantly. Times are automatically shown in your local timezone.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Auto-Updates</div>
+    <h2>Knockout Round Updates</h2>
+    <div class="gold-box">
+      <h3>How Updates Work</h3>
+      <p>As each knockout round is confirmed, the calendar file on GitHub Gist will be updated with the real team names. Because your Google Calendar is subscribed to the URL (not a one-time import), it will automatically pick up the changes — usually within 24 hours. No action needed on your part. Just ask Claude to update the file after each round!</p>
+    </div>
+    <div class="rounds">
+      <div class="round"><span class="round-name">Group Stage</span><span class="round-date">Jun 11 – Jun 27</span><span class="status-live">✓ Live</span></div>
+      <div class="round"><span class="round-name">Round of 32</span><span class="round-date">Jun 28 – Jul 3</span><span class="status-tbd">TBD</span></div>
+      <div class="round"><span class="round-name">Round of 16</span><span class="round-date">Jul 4 – Jul 7</span><span class="status-tbd">TBD</span></div>
+      <div class="round"><span class="round-name">Quarterfinals</span><span class="round-date">Jul 9 – Jul 11</span><span class="status-tbd">TBD</span></div>
+      <div class="round"><span class="round-name">Semifinals</span><span class="round-date">Jul 14 – Jul 15</span><span class="status-tbd">TBD</span></div>
+      <div class="round"><span class="round-name">Third Place &amp; Final</span><span class="round-date">Jul 18 – Jul 19</span><span class="status-tbd">TBD</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Maintenance</div>
+    <h2>Updating the Calendar</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Ask Claude to update the file</h3><p>After each knockout round, ask Claude to generate an updated .ics file with the confirmed team names.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Go to your GitHub Gist</h3><p>Visit gist.github.com and open your worldcup2026.ics gist.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click Edit (pencil icon)</h3><p>Select all the existing content and replace it with the new file contents from Claude.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Click "Update public gist"</h3><p>Google Calendar will automatically sync the changes within 24 hours. Anyone subscribed to the URL gets the update too.</p></div></div>
+    </div>
+  </div>
+
+  <div class="footer"><p>Created with <span>Claude</span> · FIFA World Cup 2026 · June 2026</p></div>
+
+</div>
+</body>
+</html>
